@@ -26,8 +26,69 @@ public class Principal {
         
         String op = input.nextLine();
         
-        System.out.println("La opcion seleccionada es ") & op;
-              
+        float[] nums = new float[2];
+        
+        float resultado = 0;
+        
+        boolean error = true;
+        
+        switch (op) {
+            case "a":
+                op="Suma";
+                System.out.println("");
+                
+                for (int i=0; i<2;i++) {
+                    System.out.println("Ingrese el numero " + (i+1) + ": ");
+                    nums[i] = input.nextFloat(); 
+                }
+                
+                resultado = nums[0] + nums[1];
+                
+                error=false;
+                
+                break;
+                
+            case "b":
+                op="Resta";
+ 
+                System.out.println("");
+                
+                for (int i=0; i<2;i++) {
+                    System.out.println("Ingrese el numero " + (i+1) + ": ");
+                    nums[i] = input.nextFloat(); 
+                }
+                
+                resultado = nums[0] - nums[1];
+                
+                error=false;
+                
+                break;
+                
+            case "c":
+            
+                op = "Multiplicacion";
+                
+                System.out.println("");
+                
+                for (int i=0; i<2;i++) {
+                    System.out.println("Ingrese el numero " + (i+1) + ": ");
+                    nums[i] = input.nextFloat(); 
+                }
+                
+                resultado = nums[0] * nums[1];
+                
+                error=false;
+                
+                break;
+
+            case "d":
+                
+                op = "Division";
+                
+                
+ 
+        }
+        System.out.println("La opcion seleccionada es " + op);
         
     }
 }
