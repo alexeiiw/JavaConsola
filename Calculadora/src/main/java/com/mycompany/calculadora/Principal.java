@@ -85,9 +85,40 @@ public class Principal {
                 
                 op = "Division";
                 
+                System.out.println("");
                 
+                for (int i=0; i<2;i++) {
+                    System.out.println("Ingrese el numero " + (i+1) + ": ");
+                    nums[i] = input.nextFloat(); 
+                }
+
+                if (nums[1] != 0) {
+                    
+                    resultado = nums[0] / nums[1];
+                    
+                    error=false;
+                    
+                }
+                else { error = true; }
  
+                break;
+                
+            default:
+                
+                error = true;
+                
+                break;
         }
+        
+        System.out.println("");
+        
+        if (error==false) {
+            System.out.println("El resultado es: " + resultado);   
+        }
+        else if (error==true) {
+            System.out.println("Error no se puede realizar su operacion");
+        }
+        
         System.out.println("La opcion seleccionada es " + op);
         
     }
