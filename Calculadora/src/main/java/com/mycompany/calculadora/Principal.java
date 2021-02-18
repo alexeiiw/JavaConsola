@@ -13,10 +13,15 @@ import java.util.Scanner;
  */
 public class Principal {
     
+    // Metodo principal
     public static void main (String[] args) {
         
-        Scanner input = new Scanner(System.in);
+        // Define variables a nivel del metodo
+        Scanner objInput = new Scanner(System.in);
+        String strContinuar = null;
         
+        do {
+         
         System.out.println("Seleccione una opcion");
         System.out.println("a - Si desea sumar");
         System.out.println("b - Si desea restar");
@@ -24,102 +29,125 @@ public class Principal {
         System.out.println("d - Si desea dividir");
         System.out.println("Escriba su opcion: ");
         
-        String op = input.nextLine();
+        // Recibe el valor del buffer del teclado
+        String strOpcion = objInput.nextLine();
         
-        float[] nums = new float[2];
+        // Define las variables a utilizar en los calculos
+        float[] fltArrNumeros = new float[2];
+        float fltResultado = 0;
         
-        float resultado = 0;
+        // Define la variable de control para el error
+        boolean blnError = true;
         
-        boolean error = true;
-        
-        switch (op) {
+        // Case de la opcion
+        switch (strOpcion) {
             case "a":
-                op="Suma";
+                strOpcion="Suma";
                 System.out.println("");
                 
-                for (int i=0; i<2;i++) {
-                    System.out.println("Ingrese el numero " + (i+1) + ": ");
-                    nums[i] = input.nextFloat(); 
+                // Solicita los valores para el calculo
+                for (int i=0; i<2; i++) {
+                    System.out.println("Ingrese el numero " + (i+1) + " : ");
+                    fltArrNumeros[i] = objInput.nextFloat(); 
                 }
                 
-                resultado = nums[0] + nums[1];
+                fltResultado = fltArrNumeros[0] + fltArrNumeros[1];
                 
-                error=false;
+                // Si la operacion es correcta
+                blnError=false;
                 
+                // Sale del case
                 break;
                 
             case "b":
-                op="Resta";
- 
+                strOpcion="Resta";
                 System.out.println("");
                 
+                // Solicita los valores para el calculo
                 for (int i=0; i<2;i++) {
-                    System.out.println("Ingrese el numero " + (i+1) + ": ");
-                    nums[i] = input.nextFloat(); 
+                    System.out.println("Ingrese el numero " + (i+1) + " : ");
+                    fltArrNumeros[i] = objInput.nextFloat(); 
                 }
                 
-                resultado = nums[0] - nums[1];
+                fltResultado = fltArrNumeros[0] - fltArrNumeros[1];
                 
-                error=false;
+                // Si la operacion es correcta
+                blnError=false;
                 
+                // Sale del case
                 break;
                 
             case "c":
-            
-                op = "Multiplicacion";
-                
+                strOpcion = "Multiplicacion";
                 System.out.println("");
                 
+                // Solicita los valores para el calculo
                 for (int i=0; i<2;i++) {
-                    System.out.println("Ingrese el numero " + (i+1) + ": ");
-                    nums[i] = input.nextFloat(); 
+                    System.out.println("Ingrese el numero " + (i+1) + " : ");
+                    fltArrNumeros[i] = objInput.nextFloat(); 
                 }
                 
-                resultado = nums[0] * nums[1];
+                fltResultado = fltArrNumeros[0] * fltArrNumeros[1];
                 
-                error=false;
+                // Si la operacion es correcta
+                blnError=false;
                 
+                // Sale del case
                 break;
 
             case "d":
-                
-                op = "Division";
-                
+                strOpcion = "Division";
                 System.out.println("");
                 
+                // Solicita los valores para el calculo
                 for (int i=0; i<2;i++) {
-                    System.out.println("Ingrese el numero " + (i+1) + ": ");
-                    nums[i] = input.nextFloat(); 
+                    System.out.println("Ingrese el numero " + (i+1) + " : ");
+                    fltArrNumeros[i] = objInput.nextFloat(); 
                 }
 
-                if (nums[1] != 0) {
+                // Valida error de division por 0
+                if (fltArrNumeros[1] != 0) {
                     
-                    resultado = nums[0] / nums[1];
+                    fltResultado = fltArrNumeros[0] / fltArrNumeros[1];
                     
-                    error=false;
+                    // Operacion exitosa
+                    blnError=false;
                     
                 }
-                else { error = true; }
+                // Si hay division por cero entonces error
+                else { blnError = true; }
  
+                // Sale del case
                 break;
-                
+            
+            // Si selecciona una opcion no valida
             default:
                 
-                error = true;
+                // Error
+                blnError = true;
                 
+                // Sale del case
                 break;
         }
         
         System.out.println("");
         
-        if (error==false) {
-            System.out.println("El resultado es: " + resultado);   
+        // Si no hay error muestra el resultado
+        if (blnError==false) {
+            System.out.println("El resultado es: " + fltResultado);   
         }
-        else if (error==true) {
+        else if (blnError==true) {
             System.out.println("Error no se puede realizar su operacion");
         }
         
-        System.out.println("La opcion seleccionada es " + op);
+        System.out.println("La opcion seleccionada es " + strOpcion);
         
+        System.out.println("Desea continuar? S/N");
+        
+        // Captura de nuevo el buffer
+        Scanner objInput2 = new Scanner(System.in);
+        strContinuar = objInput2.nextLine();
+        
+        } while (strContinuar.equals("s") || strContinuar.equals("S"));
     }
 }
